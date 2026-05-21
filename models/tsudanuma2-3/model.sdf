@@ -4,17 +4,11 @@
   <pose>0 0 0 0 0 0</pose>
   <static>true</static>
   <link name="link">
-    <!-- <collision name="collision">
-      <geometry>
-        <mesh>
-          <uri>package://gazebo_simulator/models/tsudanuma2-3/tsudanuma2-3.obj</uri>
-        </mesh>
-      </geometry>
-    </collision> -->
+    
     <visual name="visual">
       <geometry>
         <mesh>
-          <uri>package://gazebo_simulator/models/tsudanuma2-3/tsudanuma2-3.obj</uri>
+          <uri>package://orne_simulator/models/tsudanuma2-3/tsudanuma2-3.obj</uri>
         </mesh>
       </geometry>
     </visual>

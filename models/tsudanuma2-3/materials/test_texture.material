@@ -6,9 +6,7 @@ material TestTexture
     {
       texture_unit
       {
-        // Relative to the location of the material script
         texture texture1.jpg
-        // Repeat the texture over the surface (4 per face)
         scale 1.0 1.0
       }
     }

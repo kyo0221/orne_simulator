@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>gazebo_simulator</name>
+  <name>orne_simulator</name>
   <version>0.0.1</version>
   <description>ROS 2 Ignition Gazebo simulator</description>
   <maintainer email="babaryusei.kw@gmail.com">ryusei22</maintainer>
