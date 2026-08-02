@@ -25,8 +25,22 @@ sudo apt install ros-humble-ros-gz
 ---
 #### 起動
 ```
-ros2 launch simulator gazebo_simulator_gazebo.launch.py
+ros2 launch orne_simulator gazebo_simulator.launch.py
 ```
+
+launch引数:
+- `world`: worlds/内のworldファイル名（デフォルト: `tsudanuma2-3_colors.sdf`）
+- `verbosity`: Gazeboのログレベル（デフォルト: `1`）
+- `use_sim_time`: シミュレーション時刻(/clock)の使用（デフォルト: `true`）
+
+例:
+```
+ros2 launch orne_simulator gazebo_simulator.launch.py world:=orne_box_factory.sdf
+```
+
+ロボットのspawn位置は各worldファイル内のロボットの`<include>`の`<pose>`で定義します。
+
+> **Note**: tsudanuma2-3の建物モデルはvisualのみでcollisionを持ちません（LiDAR・カメラには映りますが、物理的な衝突はしません）。
 
 ---
 #### worldファイルからsdfファイルへの変換

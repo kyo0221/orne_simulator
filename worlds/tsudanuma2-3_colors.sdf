@@ -5,10 +5,10 @@
     <gui fullscreen="0">
 
       
-      <plugin filename="GzScene3D" name="3D View">
+      <plugin filename="MinimalScene" name="3D View">
         <ignition-gui>
           <title>3D View</title>
-          <property type="bool" key="showTitleBar">true</property>
+          <property type="bool" key="showTitleBar">false</property>
           <property type="string" key="state">docked</property>
         </ignition-gui>
         <engine>ogre2</engine>
@@ -16,6 +16,85 @@
         <ambient_light>0.4 0.4 0.4</ambient_light>
         <background_color>0.8 0.8 0.8</background_color>
         <camera_pose>4 -15.5 2 0 0 1.57</camera_pose>
+      </plugin>
+
+      <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+        <ignition-gui>
+          <property key="state" type="string">floating</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="GzSceneManager" name="Scene Manager">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="InteractiveViewControl" name="Interactive view control">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="CameraTracking" name="Camera Tracking">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="MarkerManager" name="Marker manager">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="SelectEntities" name="Select Entities">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="Spawn" name="Spawn Entities">
+        <ignition-gui>
+          <property key="resizable" type="bool">false</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
       </plugin>
 
       
@@ -116,10 +195,13 @@
     </physics>
 
     
-    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics"/>
-    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands"/>
-    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster"/>
-    <plugin filename="ignition-gazebo-navsat-system" name="ignition::gazebo::systems::NavSat"/>
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands"/>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu"/>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
 
     
     <scene>
@@ -151,7 +233,7 @@
         <collision name="collision">
           <geometry>
             <plane>
-              <normal>0 0 0</normal>
+              <normal>0 0 1</normal>
               <size>1 1</size>
             </plane>
           </geometry>
@@ -160,19 +242,16 @@
       <pose>0 0 0 0 0 0</pose>
     </model>
 
-    
-    <include>
-      <uri>package://orne_simulator/models/orne_box</uri>
-      <pose>4 -12.5 1 0 0 1.57</pose>
-    </include>
-
-    
-
-    
     <include>
       <uri>package://orne_simulator/models/tsudanuma2-3</uri>
       <name>building</name>
       <pose>0 0 -0.055 -1.57 3.14 0</pose>
+    </include>
+
+    <!-- ロボット（spawn位置はworldごとにここで定義） -->
+    <include>
+      <uri>package://orne_simulator/models/orne_box</uri>
+      <pose>4 -12.5 1 0 0 1.57</pose>
     </include>
 
   </world>
